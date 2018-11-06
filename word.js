@@ -15,7 +15,7 @@ var Word = function(target) {
 		this.isFound = this.letters.every(function(currentLetter) {
 			return currentLetter.isAppear;
 		});
-		return this.found;
+		return this.isFound;
 	};
 
 	this.checkLetter = function(guessLetter) {

@@ -54,10 +54,7 @@ var game = {
  				console.log(this.currentWord.wordRender());
             }
  		});
-
  	}
-
-
 };
 
 game.startGame();
