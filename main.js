@@ -26,7 +26,8 @@ var game = {
 
  	promptUser: function(){
  		prompt.get(["guessLetter"], function(err, result){
- 			console.log("You guessed: " + result.guessLetter);
+            console.log("You guessed: " + result.guessLetter);
+            
             var manyGuessed = this.currentWord.checkLetter(result.guessLetter);
             console.log(manyGuessed); 
 
@@ -44,7 +45,8 @@ var game = {
  			}
 
  			console.log("Guesses remaining: " + this.guessesRemaining);
- 			console.log("-------------------");
+            console.log("-------------------");
+             
  			if((this.guessesRemaining > 0) && (this.currentWord.found == false)){
  				this.promptUser();
  			}
