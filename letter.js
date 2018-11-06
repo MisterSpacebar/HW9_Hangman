@@ -1,5 +1,5 @@
-var Letter = function(let){
-	this.character = let;
+var Letter = function(char){
+	this.character = char;
 	this.isAppear = false;
 	this.letterRender = function(){
         if(this.isAppear){

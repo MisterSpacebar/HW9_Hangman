@@ -12,8 +12,10 @@ var game = {
  	currentWord: null,
  	
  	startGame: function(word) {
+        var newWord = Math.floor(Math.random()* this.wordBank.length);
+
  		this.resetGuesses();
- 		this.currentWord = new Word(this.wordBank[Math.floor(Math.random()* this.wordBank.length)]);
+ 		this.currentWord = new Word(this.wordBank[newWord]);
  		this.currentWord.getLetter();
  		this.promptUser();
  	},
@@ -25,7 +27,8 @@ var game = {
  	promptUser: function(){
  		prompt.get(["guessLetter"], function(err, result){
  			console.log("You guessed: " + result.guessLetter);
- 			var manyGuessed = this.currentWord.checkLetter(result.guessLetter);
+            var manyGuessed = this.currentWord.checkLetter(result.guessLetter);
+            console.log(manyGuessed); 
 
  			if(manyGuessed == 0) {
  				console.log("WRONG");
@@ -46,7 +49,7 @@ var game = {
  				this.promptUser();
  			}
  			else if(this.guessesRemaining == 0){
- 				console.log("Game over. Correct Word ", this.currentWord.target);
+ 				console.log("Game over. Correct Word " + this.currentWord.target);
  			} else {
  				console.log(this.currentWord.wordRender());
  			}
