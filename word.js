@@ -1,6 +1,6 @@
 var Letter = require('./letter.js');
 
-var World = function(target) {
+var Word = function(target) {
 	this.target = target;
 	this.lets = [];
 	this.isFound = false;
@@ -31,7 +31,7 @@ var World = function(target) {
 	};
 
 	this.wordRender = function() {
-		var string = '';
+		var string = "";
 		for (var i=0; i < this.lets.length; i++){
 			string += this.lets[i].letterRender();
 		}
