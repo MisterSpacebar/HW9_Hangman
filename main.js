@@ -9,12 +9,12 @@ var game = {
                 "BLACKSMITH","COMPLAIN","HOSPITABLY","BOYFRIEND","CLOTHESPIN","GREYHOUND","INTRODUCE","NIGHTMARE","PATHFINDER","DRAGON","PHLEGMATIC","ULTRASONIC","BINOCULARS","TRAMPOLINE"],
  	wordsWon: 0,
  	guessesRemaining: 10,
- 	currentWrd: null,
+ 	currentWord: null,
  	
  	startGame: function (wrd) {
  		this.resetGuesses();
- 		this.currentWrd = new Word(this.wordBank[Math.floor(Math.random()* this.wordBank.length)]);
- 		this.currentWrd.getLet();
+ 		this.currentWord = new Word(this.wordBank[Math.floor(Math.random()* this.wordBank.length)]);
+ 		this.currentWord.getLetter();
  		this.promptUser();
  	},
 
@@ -23,33 +23,32 @@ var game = {
  	},
 
  	promptUser: function(){
- 		var self = this;
- 		prompt.get(['guessLet'], function(err, result){
- 			console.log("You guessed: " + result.guessLet);
- 			var manyGuessed = self.currentWrd.checkLetter(result.guessLet);
+ 		prompt.get(['guessLetter'], function(err, result){
+ 			console.log("You guessed: " + result.guessLetter);
+ 			var manyGuessed = this.currentWord.checkLetter(result.guessLetter);
 
  			if(manyGuessed ==0) {
  				console.log("WRONG");
- 				self.guessesRemaining--;
+ 				this.guessesRemaining--;
  				
  			} else {
  				console.log("CORRECT");
- 					if(self.currentWrd.findWord()){
+ 					if(this.currentWord.findWord()){
  						console.log("You won!");
  						console.log("-------------------");
  						return;
  					}
  			}
 
- 			console.log("Guesses remaining: " + self.guessesRemaining);
+ 			console.log("Guesses remaining: " + this.guessesRemaining);
  			console.log("-------------------");
- 			if((self.guessesRemaining > 0) && (self.currentWrd.found == false)){
- 				self.promptUser();
+ 			if((this.guessesRemaining > 0) && (this.currentWord.found == false)){
+ 				this.promptUser();
  			}
- 			else if(self.guessesRemaining ==0){
- 				console.log("Game over. Correct Word ", self.currentWrd.target);
+ 			else if(this.guessesRemaining ==0){
+ 				console.log("Game over. Correct Word ", this.currentWord.target);
  			} else {
- 				console.log(self.currentWrd.wordRender());
+ 				console.log(this.currentWord.wordRender());
  			}
  		});
 

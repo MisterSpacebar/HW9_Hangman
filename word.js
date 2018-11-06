@@ -1,13 +1,13 @@
-var letter = require('./letter.js');
+var Letter = require('./letter.js');
 
-function Word(target) {
+var World = function(target) {
 	this.target = target;
 	this.lets = [];
 	this.isFound = false;
 
 	this.getLetter = function() {
 		for (var i=0; i < this.target.length; i++) {
-			this.lets.push(new letter(this.target[i]));
+			this.lets.push(new Letter(this.target[i]));
 		}
 	};
 

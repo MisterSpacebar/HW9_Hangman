@@ -1,13 +1,13 @@
-var letter = function(let){
+var Letter = function(let){
 	this.character = let;
 	this.isAppear = false;
 	this.letterRender = function(){
-        if(!this.isAppear){
-            return "_";
+        if(this.isAppear){
+            return this.character
         } else {
-            return this.character;
+            return "_"
         }
 	};
 };
 
-module.exports = letter;
+module.exports = Letter;
